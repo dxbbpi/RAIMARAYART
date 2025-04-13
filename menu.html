@@ -6,7 +6,6 @@
   <title>LASTNAME RAIMARAYART</title>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
-  
 
   <style>
     * {
@@ -17,38 +16,24 @@
 
     body {
       background: url('https://img5.pic.in.th/file/secure-sv1/Chorme_game_of_thorne_By_Cefano_1.png') no-repeat center center fixed;
-            background-size: cover;
-            color: #000000;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-            position: relative;
-        }
+      background-size: cover;
+      color: #000000;
+      text-align: center;
+      font-family: 'Prompt', sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
 
-        .background-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7); 
-            z-index: -1;
-            pointer-events: none;
-        }
-        .animate-fade-in {
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+    .background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); 
+      z-index: -1;
+      pointer-events: none;
+    }
 
     .center-content {
       display: flex;
@@ -56,7 +41,6 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      text-align: center;
       gap: 30px;
     }
 
@@ -67,69 +51,91 @@
       text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     }
 
-    .horizontal-menu {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
+    /* ปุ่มเปิดเมนู */
+    .openbtn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 2000;
+      font-size: 24px;
+      color: white;
+      background: rgba(255,255,255,0.1);
+      padding: 10px 14px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
     }
 
-    .menu-button {
+    .openbtn:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* โมเดิร์น Sidebar */
+    .modern-sidebar {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 260px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.4s ease;
+      z-index: 1999;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .modern-sidebar.active {
+      left: 0;
+    }
+
+    .sidebar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      color: white;
+    }
+
+    .sidebar-header h2 {
+      font-size: 20px;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    .close-icon {
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .sidebar-links a {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 14px 24px;
+      padding: 12px 16px;
+      border-radius: 10px;
       font-size: 16px;
-      font-weight: 600;
-      color: #ffffffcc;
+      color: white;
       text-decoration: none;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
+      margin-bottom: 10px;
+      transition: 0.3s;
     }
 
-    .menu-button i {
+    .sidebar-links a:hover {
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 0 12px rgba(255,255,255,0.1);
+      transform: translateX(4px);
+    }
+
+    .sidebar-links i {
       font-size: 20px;
     }
 
-    .menu-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.1), transparent);
-      transition: 0.5s;
-    }
-
-    .menu-button:hover::before {
-      left: 100%;
-    }
-
-    .menu-button:hover {
-      background: rgba(255, 255, 255, 0.08);
-      color: #ffffff;
-      box-shadow: 0 0 15px rgba(192, 192, 192, 0.2);
-    }
-
-    .footer {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
-      text-align: center;
-      font-size: 14px;
-      color: #999;
-    }
-
-    .footer span {
-      color: #ccc;
-    }
-
+    /* Snowflakes */
     .snowflake {
       position: absolute;
       top: -10px;
@@ -152,38 +158,80 @@
       .center-content h1 {
         font-size: 40px;
       }
+    }
 
-      .horizontal-menu {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .menu-button {
-        justify-content: center;
-      }
+    /* ให้ปุ่ม 'LASTNAME RAIMARAYART' อยู่ด้านล่างสุด */
+    .menu-button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffffcc;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      margin-bottom: 30px; /* เพิ่มระยะห่างด้านล่าง */
     }
   </style>
 </head>
 <body>
   <div class="background-overlay"></div>
-  <div class="center-content">
-    <h1>LASTNAME RAIMARAYART</h1>
-    <div class="horizontal-menu">
-      <a href="youngbxy.html" class="menu-button"><i class="ri-user-star-line"></i> LASTNAME RAIMARAYART</a>
-      <a href="roplay.html" class="menu-button"><i class="ri-user-star-line"></i> RAIMARAYART ROPLAY</a>
-      <a href="allrp.html" class="menu-button"><i class="ri-user-star-line"></i> RAIMARAYART TO TRIPLES ROPLAY</a>
-      <a href="allrp.html" class="menu-button"><i ></i> MEMBER VIP</a>
-      <a href="report.html" class="menu-button"><i ></i> REPORT MEMBER</a>
-      <a href="index.html" class="menu-button"><i ></i> EXIT</a>
+
+  <!-- ปุ่มเปิดเมนู -->
+  <button class="openbtn" onclick="toggleSidebar()">
+    <i id="menuIcon" class="ri-menu-3-line"></i> <!-- เปลี่ยน id ไอคอน -->
+  </button>
+
+  <!-- Sidebar แบบโมเดิร์น -->
+  <div id="modernSidebar" class="modern-sidebar">
+    <div class="sidebar-header">
+      <h2>MENU</h2>
+      <i class="ri-close-line close-icon" id="closeIcon" onclick="toggleSidebar()"></i> <!-- "X" ปิดเมนู -->
+    </div>
+    <div class="sidebar-links">
+      <a href="roplay.html"><i class="ri-gamepad-line"></i> ROPLAY</a>
+      <a href="allrp.html"><i class="ri-group-line"></i> ALL ROPLAY</a>
+      <a href="report.html"><i class="ri-alert-line"></i> REPORT</a>
+      <a href="index.html"><i class="ri-logout-box-line"></i> EXIT</a>
     </div>
   </div>
 
+  <!-- เนื้อหากลาง -->
+  <div class="center-content">
+    <h1>LASTNAME RAIMARAYART</h1>
+    <a href="youngbxy.html" class="menu-button"><i class="ri-user-star-line"></i> LASTNAME RAIMARAYART</a>
+  </div>
+
   <div class="footer">
-    
     Website <span>RAIMARAYART</span> | Powered by <span>Jox</span> | © 2022
   </div>
 
   <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("modernSidebar");
+      const menuIcon = document.getElementById("menuIcon");
+      const closeIcon = document.getElementById("closeIcon");
+
+      // Toggle sidebar visibility
+      sidebar.classList.toggle("active");
+
+      // เปลี่ยนไอคอนเมนูเป็น X เมื่อเมนูเปิด
+      if (sidebar.classList.contains("active")) {
+        menuIcon.style.display = "none"; // ซ่อนไอคอนเมนู
+        closeIcon.style.display = "block"; // แสดงปุ่ม "X"
+      } else {
+        menuIcon.style.display = "block"; // แสดงไอคอนเมนู
+        closeIcon.style.display = "none"; // ซ่อนปุ่ม "X"
+      }
+    }
+
     function createSnowflake() {
       if (Math.random() > 0.8) return;
       const snowflake = document.createElement("div");
@@ -209,15 +257,6 @@
     }
 
     setInterval(createSnowflake, 300);
-
-    // ป้องกันการกด F12 และคลิกขวา
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('keydown', e => {
-      if (e.keyCode === 123) e.preventDefault();
-    });
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('keydown', e => { if (e.keyCode == 123) e.preventDefault(); });
   </script>
-
 </body>
 </html>
