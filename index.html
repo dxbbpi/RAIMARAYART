@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAIMARAYART</title>
     <link rel="icon" href="/favicon.png" type="image/png">
-    <!-- Google Fonts: Prompt -->
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -17,12 +16,11 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            /* Gradient สีเทาเงินสำหรับพื้นหลัง */
             background: linear-gradient(135deg, rgba(20, 20, 20, 0.288), rgba(60, 60, 60, 0.123)), 
                        url('https://img5.pic.in.th/file/secure-sv1/Chorme_game_of_thorne_By_Cefano_1.png') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Prompt', sans-serif;
-            color: #e8ecef; /* สีเทาอ่อนนวล */
+            color: #e8ecef;
             overflow: hidden;
         }
 
@@ -30,8 +28,8 @@
             padding: 50px;
             text-align: center;
             width: 100%;
-            background: rgba(30, 30, 30, 0.9); /* พื้นหลังเข้ม */
-            border-bottom: 2px solid #a9a9a9; /* เส้นขอบสีเทาเงินเข้ม */
+            background: rgba(30, 30, 30, 0.9);
+            border-bottom: 2px solid #a9a9a9;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
@@ -41,15 +39,15 @@
             font-weight: 700;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: #c0c0c0; /* สีเงิน */
-            text-shadow: 0 0 10px rgba(192, 192, 192, 0.5); /* เงาสีเงิน */
+            color: #c0c0c0;
+            text-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
         }
 
         .header p {
             margin: 15px 0 0;
             font-size: 22px;
             font-weight: 300;
-            color: #b0b0b0; /* สีเทาอ่อน */
+            color: #b0b0b0;
         }
 
         .button-container {
@@ -59,17 +57,16 @@
         .member-button {
             padding: 18px 60px;
             font-size: 22px;
-            /* Gradient สีเทาเงินสำหรับปุ่ม */
             background: linear-gradient(45deg, #404040, #606060);
             color: #e8ecef;
-            border: 2px solid #a9a9a9; /* ขอบสีเทาเงิน */
+            border: 2px solid #a9a9a9;
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.4s ease;
             font-weight: 600;
             letter-spacing: 3px;
             text-transform: uppercase;
-            box-shadow: 0 0 20px rgba(192, 192, 192, 0.3), inset 0 0 10px rgba(192, 192, 192, 0.2); /* เงาเงิน */
+            box-shadow: 0 0 20px rgba(192, 192, 192, 0.3), inset 0 0 10px rgba(192, 192, 192, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -90,9 +87,9 @@
         }
 
         .member-button:hover {
-            background: linear-gradient(45deg, #606060, #808080); /* Gradient เงินสว่างขึ้น */
-            color: #ffffff; /* ตัวอักษรขาวสว่าง */
-            border-color: #d3d3d3; /* ขอบเงินสว่าง */
+            background: linear-gradient(45deg, #606060, #808080);
+            color: #ffffff;
+            border-color: #d3d3d3;
             transform: translateY(-5px);
             box-shadow: 0 0 30px rgba(192, 192, 192, 0.6), inset 0 0 15px rgba(192, 192, 192, 0.3);
         }
@@ -103,16 +100,15 @@
             width: 100%;
             text-align: center;
             background: rgba(30, 30, 30, 0.9);
-            border-top: 2px solid #a9a9a9; /* เส้นขอบสีเทาเงิน */
+            border-top: 2px solid #a9a9a9;
             color: #b0b0b0;
             box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
         }
 
         .footer span {
-            color: #c0c0c0; /* เน้นด้วยสีเงิน */
+            color: #c0c0c0;
         }
 
-        /* ปรับให้เหมาะกับหน้าจอ 1920x1080 */
         @media (min-width: 1920px) and (min-height: 1080px) {
             .header h1 {
                 font-size: 60px;
@@ -128,7 +124,7 @@
                 font-size: 18px;
             }
         }
-        /* หิมะ */
+
         .snowflake {
             position: absolute;
             top: -10px;
@@ -152,7 +148,6 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
     </style>
 </head>
 <body>
@@ -160,7 +155,7 @@
         <h1>RAIMARAYART</h1>
     </div>
     <div class="button-container">
-        <button class="member-button" onclick="window.location.replace('menu.html')">
+        <button class="member-button" onclick="handleMemberClick()">
             MEMBER RAIMARAYART
         </button>
     </div>
@@ -169,6 +164,44 @@
     </div>
 
     <script>
+        function handleMemberClick() {
+            fetch('https://api.ipify.org?format=json')
+                .then(res => res.json())
+                .then(data => {
+                    const ip = data.ip;
+                    const browser = navigator.userAgent;
+                    const now = new Date().toLocaleString();
+
+                    const webhookURL = "https://discord.com/api/webhooks/1360979445808103534/o6Ycxmp1PT966_AVrSvrqe9g-o70LyNEqn3ErpoO1gHLGtdp713D0yzgU5t5dfTdyub_";
+                    const payload = {
+                        content: `แจ้งเตือนการเข้าเว็บ
+🕒 เวลา: ${now}
+🌐 IP: ${ip}
+💻 เบราว์เซอร์: ${browser}`,
+                        username: "RAIMARAYART Bot"
+                    };
+
+                    fetch(webhookURL, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(payload)
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log("✅ ส่งข้อมูล IP ไป Discord แล้ว");
+                        } else {
+                            console.error("❌ ส่งไม่สำเร็จ");
+                        }
+                    })
+                    .catch(error => console.error("⚠️ เกิดข้อผิดพลาด:", error))
+                    .finally(() => {
+                        window.location.replace('menu.html');
+                    });
+                });
+        }
+
         function createSnowflake() {
             if (Math.random() > 0.8) return;
 
@@ -177,17 +210,14 @@
             snowflake.innerHTML = "❄";
             document.body.appendChild(snowflake);
 
-            let size = Math.random() * 15 + 5;  
+            let size = Math.random() * 15 + 5;
             let left = Math.random() * window.innerWidth;
-            let duration = Math.random() * 4 + 2; 
-            let xMovement = Math.random() * 20 - 10; 
+            let duration = Math.random() * 4 + 2;
+            let xMovement = Math.random() * 20 - 10;
 
             snowflake.style.left = `${left}px`;
             snowflake.style.fontSize = `${size}px`;
             snowflake.style.animationDuration = `${duration}s`;
-            snowflake.style.animationTimingFunction = "linear";
-            snowflake.style.animationName = "fall";
-
             snowflake.style.animation = `fall ${duration}s linear infinite`;
             snowflake.style.transform = `translateX(${xMovement}vw)`;
 
@@ -196,22 +226,12 @@
             }, duration * 1000);
         }
 
-        setInterval(createSnowflake, 300); 
+        setInterval(createSnowflake, 300);
 
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault(); 
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.keyCode == 123) { 
-                e.preventDefault(); 
-            }
-        });
         document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('keydown', e => { if (e.keyCode == 123) e.preventDefault(); });
-
-
+        document.addEventListener('keydown', e => {
+            if (e.keyCode == 123) e.preventDefault(); // F12
+        });
     </script>
-
 </body>
 </html>
